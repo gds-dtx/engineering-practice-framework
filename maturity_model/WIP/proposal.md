@@ -6,57 +6,61 @@
 
 We want a shared, repeatable way to see where our engineering practices stand today, decide where to invest, and track progress. We won't invent a model from scratch. We'll **borrow from established industry and government frameworks**: they give us credible structure, common vocabulary, and benchmarks we can compare against. This document proposes the **topic areas** the model should cover and names the frameworks behind each one. It is a starting point, not a final design; detail will come as we go.
 
-## 2. Proposed Maturity Scale
+### Principles 
 
-Adapted from the CMMI levels so we use language others recognize:
+These principles guide engineering choices across the Civil Service, the wider UK public sector, and delivery partners. 
 
-| Level | Name | In short |
-|---|---|---|
-| 1 | **Initial** | Ad hoc; results depend on individual heroics |
-| 2 | **Managed** | Practices exist at team level and are planned and tracked |
-| 3 | **Defined** | Standard practices across the organization, documented and consistent |
-| 4 | **Quantitatively Managed** | Managed with metrics; performance is predictable |
-| 5 | **Optimizing** | Continuous, data-driven improvement and innovation |
+* **Put people first**: Understand what people need and build services that everyone can use. 
+* **Own the whole service**: Give people clear responsibility for keeping each service useful and safe throughout its life. 
+* **Build quality in**: Design and test for reliable, secure services from the start, and keep checking them as they run. 
+* **Keep things simple**: Reuse proven solutions, and avoid extra features, tools, and steps that add little value. 
+* **Let risk guide effort**: Choose checks and improvements that match what could go wrong and how much harm it could cause. 
+* **Deliver small, safe changes**: Make small improvements often, check that they work, and be ready to undo them. 
+* **Learn and share openly**: Help each other learn, discuss mistakes without blame, and share what works across teams. 
+* **Measure what matters**: Check whether changes improve the whole service for people and make public money go further. 
 
-*Option to consider:* some areas (e.g., FinOps, SAMM) use their own scales. We can map those onto the scale above instead of using several scales.
+These proposed EPF principles are informed by: 
 
-## 3. Proposed Topic Areas - AI Assisted
+* NHS Digital engineering principles, covering quality, simplicity, learning, small changes, respect, and the whole service. 
+* Government Secure by Design principles, covering ownership, risk, usable protection, and continued checks throughout a service's life. 
 
-| # | Topic area | Scope (high level) | Primary influences |
-|---|---|---|---|
-| 1 | **Engineering Strategy & Governance** | Engineering vision, decision rights, standards, policy, risk oversight | CMMI (Governance), NIST CSF 2.0 (Govern) |
-| 2 | **Software Delivery & CI/CD** | Version control, build/test/deploy automation, release practices, deployment frequency | DORA, DoD DevSecOps Fundamentals |
-| 3 | **Code Quality & Testing** | Code review, test automation and coverage strategy, static analysis, definition of done | ISO/IEC 25010, CMMI (Verification & Validation), DORA (test automation) |
-| 4 | **Architecture** | Architecture decisions and records, modularity, scalability, tracking and paying down tech debt | Well-Architected Frameworks, ISO/IEC 25010 |
-| 5 | **Security & Secure SDLC** | Threat modeling, secure coding, vulnerability management, security testing | NIST SSDF, OWASP SAMM, BSIMM, CISA Secure by Design |
-| 6 | **Software Supply Chain** | Dependency management, SBOMs, build provenance, third-party risk | SLSA, NIST SP 800-161r1, CISA SBOM guidance |
-| 7 | **Reliability, Observability & Incident Management** | SLOs, monitoring and alerting, on-call, incident response, blameless postmortems | Google SRE, Well-Architected (Reliability, Operational Excellence) |
-| 8 | **Platform & Developer Experience** | Internal developer platform, self-service, golden paths, onboarding, cognitive load | CNCF Platform Maturity Model, SPACE / DevEx |
-| 9 | **Engineering Metrics & Measurement** | Which metrics we track, dashboards, how we use data to make decisions | DORA metrics, SPACE, CMMI Levels 4–5 |
-| 10 | **Product & Requirements Management** | Discovery, requirements, prioritization, traceability, feedback loops | CMMI (Requirements Development & Management), ISO/IEC/IEEE 12207 |
-| 11 | **Cloud & Cost Management** | Cloud usage, cost visibility and accountability, efficiency, sustainability | FinOps Maturity Model, Well-Architected (Cost, Sustainability) |
-| 12 | **People, Culture & Continuous Improvement** | Learning culture, psychological safety, career growth, knowledge sharing, retrospectives | DORA (Westrum culture), CMMI (Optimizing) |
-| 13 | **AI in Engineering** *(emerging / optional)* | AI-assisted development practices, governance of AI features, model risk | NIST AI RMF, ISO/IEC 42001, DORA AI Capabilities research |
+### Engineering Maturity Model (EMM) 
 
-## 4. Proposed topic areas - Aran
+The purposefully small and lean model has five aspects, each covering a different part of engineering practice. 
 
-| # | Topic area | Scope (high level) | Notes |
-|---|---|---|---|
-| 1 | **Engineering Strategy & Governance** | Engineering vision, decision rights, standards, policy, risk oversight | Strategy, recruitment,Governance burden, CAB boards, risk oversight seem key|
-| 2 | **Software Delivery & CI/CD** | Version control, build/test/deploy automation, release practices, deployment frequency. Code review, test automation and coverage strategy, static analysis, definition of done | How the team and individual work, including quant data on metrics and measurement|
-| 3 | **Security & Secure SDLC** | Threat modeling, secure coding, vulnerability management, security testing, supply chain, Dependency management | CISA Secure by Design adherance|
-| 4 | **Reliability, Observability & Incident Management** | SLOs, monitoring and alerting, on-call, incident response, blameless postmortems | Post Build stuff |
-| 5 | **Platform & Developer Experience** | Internal developer platform, self-service, golden paths, onboarding, cognitive load. Learning culture, psychological safety, career growth, knowledge sharing, retrospectives | People stuff |
-| 6 | **Product & Requirements Management** | Discovery, requirements, prioritization, traceability, feedback loops | CMMI (Requirements Development & Management), ISO/IEC/IEEE 12207 |
-| 7 | **FinOps** | Cloud usage, cost visibility and accountability, efficiency, sustainability | FinOps Maturity Model, Well-Architected (Cost, Sustainability) |
+| Aspect | The simple question it asks |
+| --- | --- |
+| Architecture and design | Are we designing services that meet needs and can evolve? |
+| Development and quality | Can we build software confidently and check that it works? |
+| Delivery and change | Can we release useful changes safely and reliably? |
+| Operations and observability | Can we understand how services are behaving and respond when something goes wrong? |
+| Security and resilience | Can we protect services and help them withstand and recover from disruption? |
 
-## 5. Suggested Next Steps
+ 
 
-- **Review and trim.** Agree as a team which areas are in scope for v1. We could merge some (e.g., 9 into 1, or 6 into 5).
-- **Define level descriptors.** For each area, write 1–2 sentences describing what levels 1–5 look like.
-- **Choose a few key metrics.** Start with the DORA metrics as a common baseline.
-- **Pilot a self-assessment.** Try it with one or two teams, then calibrate.
-- **Set a review cadence.** Reassess every 6–12 months and refine the model as we learn.
+For every aspect, expectations cover three things together: 
+
+* People: skills, responsibilities, ownership, and learning. 
+* Process (governance): repeatable ways of working, clear decisions, and appropriate oversight. 
+* Technology: tools and technical capabilities that support the practice. 
+
+A tool alone does not make a practice mature. Teams also need the skills, ownership, and ways of working to use it effectively. 
+
+The maturity model will be made of Five cumulative levels 
+
+These levels are inspired by CMMI. Each level builds on the expectations of the levels before it. 
+
+Assess each aspect independently, using evidence of everyday practice. A team might be at level 3 for development and quality and level 2 for operations and observability. Keep that profile visible rather than hiding it in a single average score. Level 5 is not a universal target. Choose a target for each aspect that fits the service's needs and risk. A critical public service may need different capabilities from a small, short-lived prototype. 
+
+| Level | Name | In plain English |
+| --- | --- | --- |
+| 1 | Initial | Work depends heavily on individual effort, and responses are often reactive. |
+| 2 | Managed | Teams have owners, basic plans, and repeatable practices for their work. |
+| 3 | Defined | Trained teams use shared standards and agreed ways of working, adapted to their context. |
+| 4 | Quantitatively Managed | Teams use reliable measurements and analysis to understand performance and guide decisions. |
+| 5 | Optimising | Teams continually test improvements, measure their effects, and share what they learn. |
+
+
 
 ## 6. References
 
