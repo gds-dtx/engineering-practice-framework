@@ -4,6 +4,8 @@
 
 This lean maturity model tackles 5 aspects; Architecture and design, Development and quality, Delivery and change, Operations and observability, and Security and resilience, across 3 verticals: people, process and technology. The model is aimed to be a self assessment carried out by teams and based on CMMI, using their existing maturity levels.
 
+The maturity model is designed such that a level 3 indicates good practices, with levels 4 and 5 defining excellent and mature practices.
+
 ## Architecture and design
 
 ### People
