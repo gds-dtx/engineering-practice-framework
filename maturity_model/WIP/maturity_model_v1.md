@@ -54,7 +54,7 @@ This lean maturity model tackles 5 aspects; Architecture and design, Development
 | --- | --- | --- | --- |
 | 1 | Initial | Testing and review happen when there's time, and "done" means different things to different people. | No definition of done; defects often found by users |
 | 2 | Managed | Every change is peer reviewed, and the team works to an agreed definition of done and test approach. | Required review on the main branch; definition of done; test approach written down |
-| 3 | Defined | The team follows the organisation's quality standards and test strategy, including automated testing for agreed quality characteristics. | Shared test strategy in use; quality characteristics (ISO/IEC 25010) chosen for the product; quality gates agreed |
+| 3 | Defined | The team follows the organisation's quality standards and test strategy, and follows an agreed branching strategy. | Shared test strategy in use; quality characteristics (ISO/IEC 25010) chosen for the product; quality gates agreed |
 | 4 | Quantitatively Managed | The team sets quality targets and tracks escaped defects, rework, and test results to guide its priorities. | Escaped defect rate; rework rate; flaky test rate; quality targets reviewed regularly |
 | 5 | Optimising | The team analyses the root causes of defects, changes its practices to prevent whole types of fault, and shares the changes. | Defect root-cause analysis; falling repeat-defect rate; practice changes adopted by other teams |
 
@@ -96,7 +96,7 @@ This lean maturity model tackles 5 aspects; Architecture and design, Development
 | --- | --- | --- | --- |
 | 1 | Initial | Builds and deployments are partly manual, so releases are risky and infrequent. | Releases monthly or less often; deploys take a lot of manual work |
 | 2 | Managed | Deployment is scripted and repeatable, and every environment is deployed the same way. | Scripted deployments; infrastructure as code for main environments; rollback is scripted |
-| 3 | Defined | The team uses the organisation's standard pipeline and golden path, with automated tests and security scans gating releases. | Pipeline template in use; automated release gates; deployments need no manual steps |
+| 3 | Defined | The team uses the an agreed CI/CD pipeline and golden path, with automated tests and security scans gating releases. | Pipeline template in use; automated release gates; deployments need no manual steps |
 | 4 | Quantitatively Managed | DORA metrics are collected automatically from the pipeline and shown on a dashboard against team targets. | Deployment frequency, lead time, change fail rate, recovery time, and rework rate on a dashboard |
 | 5 | Optimising | The team uses advanced techniques such as progressive delivery and feature flags, and shares measured improvements. | Canary or blue-green releases; feature flags; measured improvement over time; practices adopted by other teams |
 
@@ -108,7 +108,7 @@ This lean maturity model tackles 5 aspects; Architecture and design, Development
 | --- | --- | --- | --- |
 | 1 | Initial | Problems in live services are fixed by whoever is around, often the same few people. | No on-call arrangement; the same people are called out every time |
 | 2 | Managed | The team owns its live services, with an agreed on-call rota and clear incident roles. | On-call rota; incident roles (e.g. lead, communications); support contact known |
-| 3 | Defined | The team is trained in the organisation's incident and on-call practices, and learns from incidents without blame. | Incident training completed; blameless reviews; fair on-call load across the team |
+| 3 | Defined | The team is trained in the organisation's incident or has up-to-date run books supplied to a incident report team, and carries out blameless post-incident reviews. | Incident training completed; blameless reviews; fair on-call load across the team |
 | 4 | Quantitatively Managed | The team measures on-call load and toil, and acts to keep them within agreed limits. | Pages per shift; toil below about 50% of operational time; well-being survey results |
 | 5 | Optimising | The team reduces toil through engineering, and shares operational learning with other teams. | Falling toil trend; automation contributed back; incident learning sessions for other teams |
 
@@ -128,7 +128,7 @@ This lean maturity model tackles 5 aspects; Architecture and design, Development
 | --- | --- | --- | --- |
 | 1 | Initial | Monitoring is limited, and the team often hears about problems from users first. | Few or no alerts; issues reported by users before the team notices |
 | 2 | Managed | The team collects logs and metrics for its services and has alerts for the main failures. | Central logging; basic dashboards; alerts routed to on-call |
-| 3 | Defined | The team uses the organisation's observability platform, with logs, metrics, and traces, and alerts based on symptoms users see. | Distributed tracing; symptom-based alerts; SLO dashboards for key journeys |
+| 3 | Defined | The team uses the an observability platform, with logs, metrics, and traces, and alerts based on symptoms users see. | Distributed tracing; symptom-based alerts; SLO dashboards for key journeys |
 | 4 | Quantitatively Managed | SLIs and SLOs are measured automatically, and alert quality and detection time are tracked. | Automated SLO reporting; time to detect; ratio of actionable alerts |
 | 5 | Optimising | The team automates diagnosis and recovery where it's safe, and improves its observability from incident evidence. | Automated remediation for known failures; observability gaps closed after incidents; tooling shared with others |
 
@@ -140,7 +140,7 @@ This lean maturity model tackles 5 aspects; Architecture and design, Development
 | --- | --- | --- | --- |
 | 1 | Initial | Security is seen as someone else's job, and team members have little security training. | No security training; security questions passed to a central team |
 | 2 | Managed | Everyone completes basic security training, and the team has a named security champion. | Training records; named security champion; security covered in team discussions |
-| 3 | Defined | The team is trained in the organisation's secure coding, threat modelling, and incident response practices, and owns its service's security. | Secure coding and threat modelling training; champion network attended; team leads its own security work |
+| 3 | Defined | The team is trained to the organisation's agreed secure coding standards, threat modelling, and incident response practices, and owns its service's security. | Secure coding and threat modelling training; champion network attended; team leads its own security work |
 | 4 | Quantitatively Managed | The team uses evidence from findings and exercises to target its security skills and awareness. | Training linked to recurring vulnerability types; exercise results tracked over time |
 | 5 | Optimising | Team members lead security learning across teams and help shape the organisation's security practice. | Sessions run for other teams; contributions to organisational security guidance |
 
@@ -149,7 +149,7 @@ This lean maturity model tackles 5 aspects; Architecture and design, Development
 | Level | Name | In plain English | Signals |
 | --- | --- | --- | --- |
 | 1 | Initial | Security and resilience are considered late, often only when an audit or incident forces it. | No threat model; no recovery plan; vulnerabilities fixed only when chased |
-| 2 | Managed | The team threat models significant changes, fixes vulnerabilities to agreed timescales, and has a recovery plan. | Threat models in the repo; vulnerability fix timescales; recovery plan with RTO and RPO |
+| 2 | Managed | Significant changes undergo threat, the team fixes vulnerabilities to agreed timescales, and has a recovery plan. | Threat models in the repo; vulnerability fix timescales; recovery plan with RTO and RPO |
 | 3 | Defined | The team follows the organisation's secure development lifecycle and self-assesses its services against the NCSC CAF outcomes. | CAF contributing outcomes rated for the service; secure development practices (SSDF/SAMM) in use; disaster recovery tested regularly |
 | 4 | Quantitatively Managed | The team tracks vulnerability fix times, CAF outcome gaps, and recovery test results against targets. | Time to fix by severity; CAF outcomes achieved against target profile; restore test success and timing |
 | 5 | Optimising | The team removes whole classes of vulnerability and failure, runs regular exercises, and shares the lessons. | Vulnerability classes eliminated (e.g. memory-safe languages, secure defaults); game days or cyber exercises; lessons shared |
@@ -160,6 +160,6 @@ This lean maturity model tackles 5 aspects; Architecture and design, Development
 | --- | --- | --- | --- |
 | 1 | Initial | Security checks and backups are manual or missing, and dependencies aren't tracked. | No security scanning; secrets in code or configuration; untested backups |
 | 2 | Managed | The team scans dependencies, keeps secrets out of code, and backs up its data automatically. | Dependency scanning; secrets manager in use; automated backups; MFA on admin access |
-| 3 | Defined | The team uses the organisation's security tooling, with code, dependency, and secret scanning in the pipeline, and SBOMs and provenance for each release. | SAST and secret scanning in CI; SBOM per release; SLSA Build Level 2 provenance; secure configuration baselines |
+| 3 | Defined | The team integrates security tooling, with code, dependency, and secret scanning in the pipeline, and SBOMs and provenance for each release. | SAST and secret scanning in CI; SBOM per release; SLSA Build Level 2 provenance; secure configuration baselines |
 | 4 | Quantitatively Managed | Security and resilience measures are collected automatically and reported against targets. | Vulnerability dashboard; patching and fix-time trends; automated restore tests with timings |
 | 5 | Optimising | The team hardens its supply chain and resilience through automation and experiments, and shares improvements with others. | SLSA Build Level 3; automated deploy-time policy checks; chaos or failover tests; tooling reused by other teams |
